@@ -30,4 +30,9 @@ public class Board extends Timestamped {
         this.title = title;
         this.contents = contents;
     }
+
+    public void updateBoard(String title, String contents) {
+        this.title = title;
+        this.contents = contents;
+    }
 }

@@ -1,8 +1,10 @@
 package com.sparta.board2.controller;
 
 import com.sparta.board2.dto.board.request.BoardSaveRequestDto;
+import com.sparta.board2.dto.board.request.BoardUpdateRequestDto;
 import com.sparta.board2.dto.board.response.BoardSaveResponseDto;
 import com.sparta.board2.dto.board.response.BoardSimpleResponseDto;
+import com.sparta.board2.dto.board.response.BoardUpdateResponseDto;
 import com.sparta.board2.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -25,6 +27,12 @@ public class BoardController {
             @RequestParam(defaultValue = "10", required = false) int size
     ) {
         return ResponseEntity.ok(boardService.getBoards(page, size));
+    }
+
+    @PutMapping("/boards/{boardId}")
+    public ResponseEntity<BoardUpdateResponseDto> updateBoard(@PathVariable Long boardId,
+                                                              @RequestBody BoardUpdateRequestDto boardUpdateRequestDto){
+        return ResponseEntity.ok(boardService.updateBoard(boardId,boardUpdateRequestDto));
     }
 
 
